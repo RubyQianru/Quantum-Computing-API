@@ -1,5 +1,6 @@
 ## Intro to Qiskit REST API
 * Main Documentation: [Link](https://docs.quantum.ibm.com/api/runtime)
+* The Qiskit IBM Runtime REST API allows you to run on quantum systems using Qiskit Runtime primitives, a simplified interface for circuit execution powered by advanced runtime compilation, error suppression, and error mitigation techniques, as well as getting information about instances and systems you have access to.
 
 ## Backend Setup
 1. Set up Qiskit and IBM Quantum account:
