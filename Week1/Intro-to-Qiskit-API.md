@@ -11,7 +11,7 @@
 * After creating an IBM Quantum account, generate an API key from the IBM Quantum Experience dashboard.
 * Use the API key to generate an access token.
 * Authentication Test:
-```
+```python
 import requests
  
 reqUrl = "https://runtime-us-east.quantum-computing.ibm.com/jobs?limit=10&offset=0&exclude_params=true"
@@ -26,4 +26,8 @@ payload = ""
 response = requests.request("GET", reqUrl, data=payload,  headers=headersList)
  
 print(response.json())
+```
+* Example Response:
+```
+{'jobs': [], 'count': 0, 'limit': 10, 'offset': 0}
 ```
