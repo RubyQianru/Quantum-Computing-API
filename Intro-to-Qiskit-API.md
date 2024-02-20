@@ -1,7 +1,7 @@
 ## Intro to Qiskit REST API
 * Main Documentation: [Link](https://docs.quantum.ibm.com/api/runtime)
 
-## Step by Step 
+## Backend Setup
 1. Set up Qiskit and IBM Quantum account:
 * Install Qiskit: Follow the installation instructions on the (Qiskit documentation).
 * Create an IBM Quantum account: Sign up on the (IBM Quantum Experience) website.
