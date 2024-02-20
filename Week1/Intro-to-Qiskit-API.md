@@ -1,8 +1,10 @@
+## Intro to Quantum Physics
+* [Basics of quantum information](https://learning.quantum.ibm.com/course/basics-of-quantum-information/single-systems)
+
 ## Intro to Qiskit REST API
 * Main Documentation: [Link](https://docs.quantum.ibm.com/api/runtime)
 * The Qiskit IBM Runtime REST API allows you to run on quantum systems using Qiskit Runtime primitives, a simplified interface for circuit execution powered by advanced runtime compilation, error suppression, and error mitigation techniques, as well as getting information about instances and systems you have access to.
-
-## Backend Setup
+* Backend Setup
 1. Set up Qiskit and IBM Quantum account:
 * Install Qiskit: Follow the installation instructions on the (Qiskit documentation).
 * Create an IBM Quantum account: Sign up on the (IBM Quantum Experience) website.
