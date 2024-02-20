@@ -14,3 +14,5 @@ Quantum Computing REST API communication documentation for Intro to Quantum Comp
 
 # Inspos
 * [Using Real Quantum Hardware to Make Art Creatives in Quantum](https://www.youtube.com/watch?v=4fwOOnHPQFo)
+* [Quantum art installation lands in New York City](https://medium.com/qiskit/quantum-art-installation-lands-in-new-york-city-44edb8ea9291)
+* [Quantum Art Exhibition - Innovation Center - The New School](https://innovationcenter.newschool.edu/quantum-art-exhibition/)
