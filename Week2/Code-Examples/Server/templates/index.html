@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <title>Quantum Art Simulation</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+        let socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('connect', function() {
+            console.log("Connected!")
+        })
+
+        function executeQuantumComputation(data) {
+            // Collect any data needed for quantum computation
+            // Send data to the server
+            socket.emit('execute_quantum', data);
+        }
+        
+        socket.on('quantum_result', function(result) {
+            // Handle the quantum computation result
+            console.log(result);
+        });
+
+        executeQuantumComputation(29)
+        
+    </script>
+</body>
+</html>
