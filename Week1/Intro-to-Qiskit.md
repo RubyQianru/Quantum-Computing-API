@@ -1,6 +1,4 @@
-# Intro to Quantum Physics
-* [Basics of quantum information](https://learning.quantum.ibm.com/course/basics-of-quantum-information/single-systems)
-* If you want to learn more about quantum physics and quantum information, please refer to [Intro to Quantum Information](https://github.com/RubyQianru/Quantum-Computing-API/blob/main/Week1/Intro-to-Quantum-Information.md)
+If you want to learn more about quantum physics and quantum information, please refer to [More About Quantum](https://github.com/RubyQianru/Quantum-Computing-API/blob/main/Week1/More-about-Quantum.md)
 
 # Intro to Python 
 * Download Python: [Link](https://www.python.org/downloads/)
@@ -21,15 +19,14 @@ pip install qiskit-ibm-runtime --user
 ```
 ### Your First Quantum Circuit
 > In a circuit, we typically need to do three jobs: First, encode the input, then do some actual computation, and finally extract an output. For your first quantum circuit, we'll focus on the last of these jobs. We start by creating a quantum circuit with 3 qubits and 3 outputs.
-* [Jupyter Notebook](https://github.com/RubyQianru/Quantum-Computing-API/blob/main/Week1/Code-Examples/Quantum-Circuit.ipynb)
-* Refrer to [Atoms of Computation](https://github.com/Qiskit/textbook/blob/main/notebooks/intro/atoms-of-computation.ipynb) for the complete setup.
+* [Code Example](https://github.com/RubyQianru/Quantum-Computing-API/blob/main/Week1/Code-Examples/Quantum-Circuit.ipynb)
+* Refer to [Atoms of Computation](https://github.com/Qiskit/textbook/blob/main/notebooks/intro/atoms-of-computation.ipynb) for the complete setup.
 
 # Intro to Qiskit REST API
 * Main Documentation: [Link](https://docs.quantum.ibm.com/api/runtime)
 > The Qiskit IBM Runtime REST API allows you to run on quantum systems using Qiskit Runtime primitives, a simplified interface for circuit execution powered by advanced runtime compilation, error suppression, and error mitigation techniques, as well as getting information about instances and systems you have access to.
 
-
-### Backend Setup
+### Authentication Setup
 1. Set up Qiskit and IBM Quantum account:
 * Install Qiskit: Follow the installation instructions on the (Qiskit documentation).
 * Create an IBM Quantum account: Sign up on the (IBM Quantum Experience) website.
