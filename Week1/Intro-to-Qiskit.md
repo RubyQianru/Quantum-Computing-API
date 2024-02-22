@@ -6,7 +6,7 @@ If you want to learn more about quantum physics and quantum information, please 
 ```
 python get-pip.py
 ```
-* If you want to get some practice before we start with Qiskit, take a look at: [Python and Numpy Tutorials](https://cs231n.github.io/python-numpy-tutorial/)
+* If you want to get some practice before we start with Qiskit, take a look at: [Python and Numpy Tutorials](https://cs231n.github.io/python-numpy-tutorial/), [Introduction to Python and Jupyter notebooks](https://github.com/Qiskit/textbook/blob/main/notebooks/ch-prerequisites/python-and-jupyter-notebooks.ipynb)
 
 # Intro to Qiskit
 * [Atoms of Computation](https://github.com/Qiskit/textbook/blob/main/notebooks/intro/atoms-of-computation.ipynb)
@@ -53,6 +53,7 @@ if __name__ == '__main__':
 ```
 
 ### Set up Frontend index.html
+* If you want to get some knowledge on HTML and CSS take a look at these useful Links: [Mozilla - Intro to HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML), [Mozilla - Getting Started with CSS Tutorials Parts 1-14](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps)
 * Create an HTML file (e.g., templates/index.html) for the front-end using p5.js:
 ```html
 <!DOCTYPE html>
