@@ -1,6 +1,6 @@
 # Intro to Quantum Physics
 * [Basics of quantum information](https://learning.quantum.ibm.com/course/basics-of-quantum-information/single-systems)
-* If you want to learn more about quantum physics and quantum information, please refer to the 
+* If you want to learn more about quantum physics and quantum information, please refer to [Intro to Quantum Information](https://github.com/RubyQianru/Quantum-Computing-API/blob/main/Week1/Intro-to-Quantum-Information.md)
 
 # Intro to Python 
 * Download Python: [Link](https://www.python.org/downloads/)
