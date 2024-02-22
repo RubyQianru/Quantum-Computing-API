@@ -11,7 +11,7 @@ python get-pip.py
 
 # Intro to Qiskit REST API
 * Main Documentation: [Link](https://docs.quantum.ibm.com/api/runtime)
-* The Qiskit IBM Runtime REST API allows you to run on quantum systems using Qiskit Runtime primitives, a simplified interface for circuit execution powered by advanced runtime compilation, error suppression, and error mitigation techniques, as well as getting information about instances and systems you have access to.
+> The Qiskit IBM Runtime REST API allows you to run on quantum systems using Qiskit Runtime primitives, a simplified interface for circuit execution powered by advanced runtime compilation, error suppression, and error mitigation techniques, as well as getting information about instances and systems you have access to.
 ### Download Qiskit
 ``` 
 pip install qiskit --user
