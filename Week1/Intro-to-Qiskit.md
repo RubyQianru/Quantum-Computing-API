@@ -22,6 +22,69 @@ pip install qiskit-ibm-runtime --user
 * [Code Example](https://github.com/RubyQianru/Quantum-Computing-API/blob/main/Week1/Code-Examples/Quantum-Circuit.ipynb)
 * Refer to [Atoms of Computation](https://github.com/Qiskit/textbook/blob/main/notebooks/intro/atoms-of-computation.ipynb) for the complete setup.
 
+# Your First Real-Time Server
+* Python Flask Documentation: [Link](https://flask.palletsprojects.com/en/3.0.x/)
+* Install Flask & socket.io:
+```
+pip install Flask, Flask-SocketIO
+```
+### Set up Backend server.py
+* Create a Python script (e.g., server.py) for your Flask server:
+```python
+from flask import Flask, render_template
+from flask_socketio import SocketIO
+
+app = Flask(__name__)
+socketio = SocketIO(app)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@socketio.on('execute_quantum')
+def execute_quantum(data):
+    # Use Qiskit to perform quantum computation
+    # Send the results back to the client
+    result = {}  # Replace with your quantum computation logic
+    socketio.emit('quantum_result', result)
+
+if __name__ == '__main__':
+    socketio.run(app, debug=True)
+```
+
+### Set up Frontend index.html
+* Create an HTML file (e.g., templates/index.html) for the front-end using p5.js:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <title>Quantum Art Simulation</title>
+</head>
+<body>
+
+    <script>
+        let socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        function executeQuantumComputation() {
+            // Collect any data needed for quantum computation
+            // Send data to the server
+            socket.emit('execute_quantum', { /* your data here */ });
+        }
+
+        socket.on('quantum_result', function(result) {
+            // Handle the quantum computation result
+            console.log(result);
+        });
+    </script>
+</body>
+</html>
+```
+
+
 # Intro to Qiskit REST API
 * Main Documentation: [Link](https://docs.quantum.ibm.com/api/runtime)
 > The Qiskit IBM Runtime REST API allows you to run on quantum systems using Qiskit Runtime primitives, a simplified interface for circuit execution powered by advanced runtime compilation, error suppression, and error mitigation techniques, as well as getting information about instances and systems you have access to.
