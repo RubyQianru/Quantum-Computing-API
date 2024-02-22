@@ -84,6 +84,9 @@ if __name__ == '__main__':
 </body>
 </html>
 ```
+### Example: Generate Random Numbers
+* Link to the folder: [Link](https://github.com/RubyQianru/Quantum-Computing-API/tree/main/Week1/Code-Examples/Server)
+* The server will "ask" qiskit quantum computer to generate an array of 29 random bits, and the browser will receive the array, and console.log the array to the console.
 
 # Intro to Qiskit REST API
 * Main Documentation: [Link](https://docs.quantum.ibm.com/api/runtime)
