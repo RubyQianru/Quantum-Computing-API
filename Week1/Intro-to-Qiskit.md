@@ -21,14 +21,8 @@ pip install qiskit-ibm-runtime --user
 ```
 ### Your First Quantum Circuit
 > In a circuit, we typically need to do three jobs: First, encode the input, then do some actual computation, and finally extract an output. For your first quantum circuit, we'll focus on the last of these jobs. We start by creating a quantum circuit with 3 qubits and 3 outputs.
-
-```python
-from qiskit import QuantumCircuit
-# Create quantum circuit with 3 qubits and 3 classical bits
-# (we'll explain why we need the classical bits later)
-qc = QuantumCircuit(3, 3)
-qc.draw()  # returns a drawing of the circuit
-```
+* [Jupyter Notebook](https://github.com/RubyQianru/Quantum-Computing-API/blob/main/Week1/Code-Examples/Quantum-Circuit.ipynb)
+* Refrer to [Atoms of Computation](https://github.com/Qiskit/textbook/blob/main/notebooks/intro/atoms-of-computation.ipynb) for the complete setup.
 
 # Intro to Qiskit REST API
 * Main Documentation: [Link](https://docs.quantum.ibm.com/api/runtime)
