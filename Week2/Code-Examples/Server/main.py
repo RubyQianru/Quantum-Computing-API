@@ -1,8 +1,14 @@
-from fastapi import fastapi, WebSocket
+from fastapi import FastAPI, WebSocket
+from fastapi.responses import FileResponse
+
+from ConnectionManager import ConnectionManager
 
 app = FastAPI()
 
 manager = ConnectionManager()
+@app.get("/")
+async def get():
+    return FileResponse("templates/index.html")
 
 @app.websocket("/communicate")
 async def websocket_endpoint(websocket: WebSocket):
@@ -15,22 +21,5 @@ async def websocket_endpoint(websocket: WebSocket):
         manager.disconnect(websocket)
         await manager.send_personal_message("Bye!!!",websocket)
 
-class ConnectionManager:
-    """Class defining socket events"""
-    def __init__(self):
-        """init method, keeping track of connections"""
-        self.active_connections = []
-    
-    async def connect(self, websocket: WebSocket):
-        """connect event"""
-        await websocket.accept()
-        self.active_connections.append(websocket)
 
-    async def send_personal_message(self, message: str, websocket: WebSocket):
-        """Direct Message"""
-        await websocket.send_text(message)
-    
-    def disconnect(self, websocket: WebSocket):
-        """disconnect event"""
-        self.active_connections.remove(websocket)
 

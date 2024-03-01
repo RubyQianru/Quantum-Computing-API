@@ -9,26 +9,30 @@
 </head>
 <body>
 
-    <script type="text/javascript">
-        let socket = io.connect('http://' + document.domain + ':' + location.port);
-
-        socket.on('connect', function() {
-            console.log("Connected!")
-        })
-
-        function executeQuantumComputation(data) {
-            // Collect any data needed for quantum computation
-            // Send data to the server
-            socket.emit('execute_quantum', data);
+    <h1>WebSocket with FastAPI</h1>
+    <form action="" onsubmit="sendMessage(event)">
+        <input type="text" id="messageText" autocomplete="off" />
+        <button>Send</button>
+    </form>
+    <ul id='messages'>
+    </ul>
+    <script>
+        var ws = new WebSocket(`ws://localhost:8000/communicate`);
+        console.log("Connected")
+        ws.onmessage = function (event) {
+            var messages = document.getElementById('messages')
+            var message = document.createElement('li')
+            var content = document.createTextNode(event.data)
+            message.appendChild(content)
+            messages.appendChild(message)
+        };
+        console.log("Send Mesage")
+        function sendMessage(event) {
+            var input = document.getElementById("messageText")
+            ws.send(input.value)
+            input.value = ''
+            event.preventDefault()
         }
-        
-        socket.on('quantum_result', function(result) {
-            // Handle the quantum computation result
-            console.log(result);
-        });
-
-        executeQuantumComputation(29)
-        
     </script>
 </body>
 </html>
