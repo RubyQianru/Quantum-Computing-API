@@ -9,30 +9,33 @@
 </head>
 <body>
 
-    <h1>WebSocket with FastAPI</h1>
+    <h1>Noise Generator</h1>
     <form action="" onsubmit="sendMessage(event)">
-        <input type="text" id="messageText" autocomplete="off" />
+        <input type="number" id="inputData" autocomplete="off" />
         <button>Send</button>
     </form>
     <ul id='messages'>
     </ul>
     <script>
-        var ws = new WebSocket(`ws://localhost:8000/communicate`);
+        var ws = new WebSocket(`ws://localhost:8000/simulation`);
+
         console.log("Connected")
         ws.onmessage = function (event) {
-            var messages = document.getElementById('messages')
-            var message = document.createElement('li')
-            var content = document.createTextNode(event.data)
+            let messages = document.getElementById('messages')
+            let message = document.createElement('li')
+            let content = document.createTextNode(event.data)
             message.appendChild(content)
             messages.appendChild(message)
         };
+
         console.log("Send Mesage")
         function sendMessage(event) {
-            var input = document.getElementById("messageText")
+            let input = document.getElementById("inputData") // input: string
             ws.send(input.value)
-            input.value = ''
+            input.value = null
             event.preventDefault()
         }
+
     </script>
 </body>
 </html>

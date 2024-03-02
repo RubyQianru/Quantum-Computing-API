@@ -15,6 +15,10 @@ class ConnectionManager:
     async def send_personal_message(self, message: str, websocket: WebSocket):
         """Direct Message"""
         await websocket.send_text(message)
+
+    async def send_data(self, data, websocket: WebSocket):
+        """Direct Message: data from qc"""
+        await websocket.send_text(data)
     
     def disconnect(self, websocket: WebSocket):
         """disconnect event"""
