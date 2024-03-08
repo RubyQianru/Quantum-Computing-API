@@ -25,7 +25,7 @@ async def websocket_endpoint(websocket: WebSocket):
         try:
             data_integer = int(data_text)
             print(f"Received integer data: {data_integer}")
-            qcResponse = u.generateNoise(data_integer)
+            qcResponse = u.hadamardControlNot(data_integer)
             await manager.send_data(f"Received:{qcResponse}",websocket)
 
         except ValueError:
