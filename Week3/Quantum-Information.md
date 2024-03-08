@@ -1,8 +1,7 @@
 # Quantum Information
 - Review: **Entanglement**, **Superposition**, **Quantum Gates**
 - [Quantum Engtanglements: Explained in a REALLY SIMPLE Words](https://www.youtube.com/watch?v=fkAAbXPEAtU)
-- []
-- 
+
 
 ## Classical States
 - Finite and none empty sets.
@@ -19,3 +18,8 @@
 ## Probabilistic States
 - **Probabilistic states** of compound systems associate probabilities with the Cartesian product of the classical state sets of the indivisual systems.
 
+## Quantum Information
+
+A **quantum state** of a system is represented by a **column vector** whose indices are placed in correspondence with the classical states of that system:
+- The entries are complex numbers.
+- The sum of the absolute values squared of the entries must equal 1.
