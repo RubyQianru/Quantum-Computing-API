@@ -30,6 +30,7 @@ import numpy as np
 ```
 
 ### Array Creation
+
 ```python
 
 a1D = np.array([1, 2, 3, 4])
@@ -37,5 +38,48 @@ a2D = np.array([[1, 2], [3, 4]])
 a3D = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
 
 ```
+### Array Shape
 
+The shape of an array is the number of elements in each dimension.
+
+The example returns (2, 4), which means that the array has 2 dimensions, where the first dimension has 2 elements and the second has 4.
+
+```python
+
+arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+
+print(arr.shape)
+
+```
+
+
+
+### Array Reshape
+
+The example reshapes a 1-D array to a 2-D array. The outermost dimension will have 4 arrays, each with 3 elements.
+
+```python
+
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+newarr = arr.reshape(4, 3)
+
+print(newarr)
+
+```
+
+
+
+### Array Search
+
+The example finds the indexes where the value is 4:
+
+```python
+
+arr = np.array([1, 2, 3, 4, 5, 4, 4])
+
+x = np.where(arr == 4)
+
+print(x)
+
+```
 
