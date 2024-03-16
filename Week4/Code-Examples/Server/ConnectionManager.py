@@ -1,6 +1,5 @@
 from fastapi import WebSocket
 
-
 class ConnectionManager:
     """Class defining socket events"""
     def __init__(self):

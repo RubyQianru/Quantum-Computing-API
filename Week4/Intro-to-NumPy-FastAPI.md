@@ -83,3 +83,11 @@ print(x)
 
 ```
 
+# Fast API
+
+
+### Inatall the Server Program
+
+```
+pip install "uvicorn[standard]"
+```
