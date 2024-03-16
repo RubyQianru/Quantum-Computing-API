@@ -5,37 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
     <title>Quantum Art Simulation</title>
 </head>
 <body>
-
-    <h1>Noise Generator</h1>
-    <form action="" onsubmit="sendMessage(event)">
-        <input type="number" id="inputData" autocomplete="off" />
-        <button>Send</button>
-    </form>
-    <ul id='messages'>
-    </ul>
-    <script>
-        var ws = new WebSocket(`ws://localhost:8000/simulation`);
-
-        console.log("Connected")
-        ws.onmessage = function (event) {
-            let messages = document.getElementById('messages')
-            let message = document.createElement('li')
-            let content = document.createTextNode(event.data)
-            message.appendChild(content)
-            messages.appendChild(message)
-        };
-
-        console.log("Send Mesage")
-        function sendMessage(event) {
-            let input = document.getElementById("inputData") // input: string
-            ws.send(input.value)
-            input.value = null
-            event.preventDefault()
-        }
-
+    <h1>Random Walker</h1>
     </script>
 </body>
 </html>
