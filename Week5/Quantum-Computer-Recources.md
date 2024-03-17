@@ -1,4 +1,4 @@
-# More Quantum Computer API Options
+# More Quantum Computing Resources
 ### Google Quantum AI on Cirq Simulator
 
 > The Quantum Engine API is not yet open for public access.
