@@ -1,15 +1,19 @@
 from fastapi import (
     FastAPI,
     WebSocket,
-    WebSocketException,
+    # WebSocketException,
 )
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from ConnectionManager import ConnectionManager
 import utils as u
 
 app = FastAPI()
 
 manager = ConnectionManager()
+
+app.mount("/static", StaticFiles(directory="templates"), name="static")
+
 @app.get("/")
 async def get():
     return FileResponse("templates/index.html")
@@ -23,11 +27,8 @@ async def websocket_endpoint(websocket: WebSocket):
     while True:
         data_text = await websocket.receive_text()
         try:
-            data_integer = int(data_text)
-            print(f"Received integer data: {data_integer}")
-            qcResponse = u.randomWalker(data_integer)
-            await manager.send_data(f"Received:{qcResponse}",websocket)
-
+            qcResponse = u.randomWalker()
+            await manager.send_data(f"{qcResponse}",websocket)
         except ValueError:
                 await websocket.send_text("Invalid integer format")
 
