@@ -24,8 +24,5 @@ def generateRandomness(num_qubits):
     counts = result.get_counts(qc)
 
     binary_string = max(counts, key=counts.get)
-    # random_bits = np.array([int(bit) for bit in binary_string])[::-1]
-
-    # random_bits = random_bits.tolist()
 
     return binary_string
