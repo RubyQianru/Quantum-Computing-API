@@ -68,7 +68,6 @@ print(newarr)
 ```
 
 
-
 ### Array Search
 
 The example finds the indexes where the value is 4:
