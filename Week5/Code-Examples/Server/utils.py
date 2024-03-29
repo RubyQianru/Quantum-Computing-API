@@ -4,8 +4,17 @@ from qiskit.visualization import plot_histogram
 import numpy as np
 
 def randomWalker():
-    result = generateRandomness(2)
-    return result
+    counts = generateRandomness(2)
+    binary_string = max(counts, key=counts.get)
+
+    return binary_string
+
+def randomFloat():
+    counts = generateRandomness(5)
+    measurement = list(counts.keys())[0]  
+    random_float = int(measurement, 2) / (2**5)  
+
+    return random_float
 
 def generateRandomness(num_qubits):
 
@@ -23,6 +32,4 @@ def generateRandomness(num_qubits):
     result = simulator.run(compiled_circuit).result()
     counts = result.get_counts(qc)
 
-    binary_string = max(counts, key=counts.get)
-
-    return binary_string
+    return counts

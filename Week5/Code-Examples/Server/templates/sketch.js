@@ -1,12 +1,12 @@
 let websocket;
-let walker;
+let line;
 
 function setup() {
   createCanvas(400, 400);
   background(255);
 
-  websocket = new WebSocket('ws://localhost:8000/simulation');
-  walker =  new Walker()
+  websocket = new WebSocket('ws://localhost:8000/randomfloat');
+  line =  new Line()
 }
 
 function draw() {
@@ -19,28 +19,21 @@ function draw() {
   };
 }
 
-class Walker {
+class Line {
   constructor() {
-    this.x = width / 2;
-    this.y = height / 2;
+
+    this.t = 0.0;
   }
 
   show() {
-    stroke(0);
-    strokeWeight(10);
-    point(this.x, this.y);
+    beginShape();
+    for (let i = 0; i < width; i+= 1) {
+      let y = 
+    }
   }
 
   step(seed) {
-    if (seed == "00") {
-      this.x+=10;
-    } else if (seed == "10") {
-      this.x-=10;
-    } else if (seed == "01") {
-      this.y+=10;
-    } else {
-      this.y-=10;
-    }
+
   }
 }
 
