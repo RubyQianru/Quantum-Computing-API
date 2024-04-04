@@ -24,6 +24,7 @@ async def websocket_connection_handler(websocket: WebSocket, data_handler):
     print("Connection Manager Connected")
 
     while True:
+        data_text = await websocket.receive_text()
         try:
             qcResponse = await data_handler()
             await manager.send_data(f"{qcResponse}", websocket)

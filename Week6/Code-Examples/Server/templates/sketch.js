@@ -1,34 +1,32 @@
 let websocket;
-let line;
-let t = 0.0;
+let x = 0;
 
 function setup() {
   createCanvas(400, 400);
   background(255);
-
   websocket = new WebSocket('ws://localhost:8000/randomfloat');
-}
 
-function draw() {
+  websocket.onopen = function(event) {
+    console.log("Connection established");
+    requestNewPoint(); 
+  };
 
-  noFill();
-  stroke(0);
-  strokeWeight(2);
-  websocket.send("randomfloat");
   websocket.onmessage = function(event) {
-    let xoff = t;
-
-    beginShape();
-      for (let i = 0; i < width; i++) {
-        let y = event.data * height;
-        xoff += 0.01;
-        vertex(i, y);
-      }
-    endShape();
-    t += 0.01;
+    x = parseFloat(event.data) * width; 
+    if (x >= 0) { 
+      drawPoint(); 
+    }
   };
 }
 
+function drawPoint() {
+    noStroke();
+    fill(0, 10);
+    circle(x, 120, 16);
+    requestNewPoint(); 
+  
+}
 
-
-
+function requestNewPoint() {
+  websocket.send("randomfloat"); 
+}
