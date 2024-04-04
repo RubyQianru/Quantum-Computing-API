@@ -91,3 +91,7 @@ print(x)
 pip install "uvicorn[standard]"
 ```
 
+### Run the Server with
+'''
+uvicorn main:app --reload
+'''

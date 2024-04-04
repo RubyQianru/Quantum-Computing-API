@@ -14,16 +14,16 @@ function draw() {
   noFill();
   stroke(0);
   strokeWeight(2);
-
-  websocket.send();
+  websocket.send("randomfloat");
   websocket.onmessage = function(event) {
+    let xoff = t;
 
     beginShape();
-    for (let i = 0; i < width; i++) {
-      let y = event.data * height;
-      xoff += 0.01;
-      vertex(i, y);
-    }
+      for (let i = 0; i < width; i++) {
+        let y = event.data * height;
+        xoff += 0.01;
+        vertex(i, y);
+      }
     endShape();
     t += 0.01;
   };
