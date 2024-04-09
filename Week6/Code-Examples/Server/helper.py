@@ -10,13 +10,19 @@ async def websocket_connection_handler(websocket: WebSocket, data_handler):
     await manager.connect(websocket)
     print("Connection Manager Connected")
 
-    while True:
-        data_text = await websocket.receive_text()
-        try:
+    try:
+        while True:
             qcResponse = await data_handler()
             await manager.send_data(f"{qcResponse}", websocket)
-        except ValueError:
-            await websocket.send_text("Invalid format")
+            await asyncio.sleep(1)  
+
+    except asyncio.CancelledError:
+        print("WebSocket connection closed by client.")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+    finally:
+        manager.disconnect(websocket)
+        print("WebSocket Disconnected")
 
 async def handle_random_walker():
     return u.randomWalker()

@@ -8,7 +8,6 @@ function setup() {
 
   websocket.onopen = function(event) {
     console.log("Connection established");
-    requestNewPoint(); 
   };
 
   websocket.onmessage = function(event) {
@@ -23,10 +22,6 @@ function drawPoint() {
     noStroke();
     fill(0, 10);
     circle(x, 120, 16);
-    requestNewPoint(); 
   
 }
 
-function requestNewPoint() {
-  websocket.send("randomfloat"); 
-}
