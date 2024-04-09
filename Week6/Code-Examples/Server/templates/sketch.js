@@ -1,8 +1,9 @@
 let websocket;
 let x = 0;
+let arr = [];
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, 400);
   background(255);
   websocket = new WebSocket('ws://localhost:8000/randomfloat');
 
@@ -11,17 +12,22 @@ function setup() {
   };
 
   websocket.onmessage = function(event) {
-    x = parseFloat(event.data) * width; 
-    if (x >= 0) { 
-      drawPoint(); 
+    y = parseFloat(event.data) * height; 
+    if (y >= 0) { 
+      arr.push(y);
+      drawCurve(); 
     }
   };
 }
 
-function drawPoint() {
-    noStroke();
-    fill(0, 10);
-    circle(x, 120, 16);
-  
+function drawCurve() {
+  background(255);
+  stroke(0);
+  strokeWeight(2);
+  beginShape();
+  for (let i = 0; i < arr.length; i += 1) {
+    curveVertex(i*10, arr[i]);
+  }
+  endShape();
 }
 
