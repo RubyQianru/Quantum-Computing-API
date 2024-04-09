@@ -41,6 +41,14 @@ Link: [Quantum Float](https://github.com/RubyQianru/Quantum-Computing-API/tree/m
 
 A random float visualizer visualizing float calculations conducted by IBM Qiskit quantum computer simulator. 
 
+### P5 Sketch: Quantum Curve
+
+Link: [Quantum Curve](https://github.com/RubyQianru/Quantum-Computing-API/blob/main/Week6/Code-Examples/Server/templates/sketch.js)
+
+<img width="949" alt="截屏2024-04-09 16 04 53" src="https://github.com/RubyQianru/Quantum-Computing-API/assets/142470034/564a22bf-4aba-4b5e-9922-f4ee8603a1be">
+
+A quantum curve art conducted by IBM Qiskit quantum computer simulator. 
+
 # Inspos
 * [Using Real Quantum Hardware to Make Art Creatives in Quantum](https://www.youtube.com/watch?v=4fwOOnHPQFo)
 * [Quantum art installation lands in New York City](https://medium.com/qiskit/quantum-art-installation-lands-in-new-york-city-44edb8ea9291)
