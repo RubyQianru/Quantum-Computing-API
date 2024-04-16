@@ -14,7 +14,7 @@ async def websocket_connection_handler(websocket: WebSocket, data_handler):
         while True:
             qcResponse = await data_handler()
             await manager.send_data(f"{qcResponse}", websocket)
-            await asyncio.sleep(0.5)  
+            await asyncio.sleep(30)  
 
     except asyncio.CancelledError:
         print("WebSocket connection closed by client.")

@@ -36,7 +36,7 @@ def generateRandomness(num_qubits):
 
     qc.measure(range(num_qubits),range(num_qubits))
 
-    result = simulatorRun(qc)
+    result = azureqpuRun(qc)
     counts = result.get_counts(qc)
 
     return counts
