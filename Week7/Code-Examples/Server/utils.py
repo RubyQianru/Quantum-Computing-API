@@ -1,3 +1,4 @@
+# Qiskit simulators
 from qiskit import QuantumCircuit, transpile, assemble
 from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram
@@ -10,27 +11,26 @@ from azure.identity import DefaultAzureCredential
 default_credential = DefaultAzureCredential()
 
 # IBM Quantum
-from qiskit_ibm_runtime import QiskitRuntimeService
+# from qiskit_ibm_runtime import QiskitRuntimeService
+# from qiskit_ibm_runtime import QiskitRuntimeService, Sampler, Estimator, Session
 
 import numpy as np
+import asyncio
 
-
-
-
-def randomWalker():
-    counts = generateRandomness(2)
+async def randomWalker():
+    counts = await generateRandomness(2)
     binary_string = max(counts, key=counts.get)
 
     return binary_string
 
-def randomFloat():
-    counts = generateRandomness(5)
+async def randomFloat():
+    counts = await generateRandomness(5)
     measurement = list(counts.keys())[0]  
     random_float = int(measurement, 2) / (2**5)  
 
     return random_float
 
-def generateRandomness(num_qubits):
+async def generateRandomness(num_qubits):
 
     qc = QuantumCircuit(num_qubits, num_qubits)
     qc.h(range(num_qubits))
@@ -40,8 +40,13 @@ def generateRandomness(num_qubits):
 
     qc.measure(range(num_qubits),range(num_qubits))
 
-    result = azureqpuRun(qc)
-    counts = result.get_counts(qc)
+    print("Circuit ready!")
+    counts = None
+    try: 
+        result = await azureqpuRun(qc)
+        counts = result.get_counts(qc)
+    except Exception as e:
+        print(f"Unexpected error: {e}")
 
     return counts
 
@@ -52,7 +57,7 @@ def simulatorRun(circuit):
     result = simulator.run(compiled_circuit).result()
     return result
 
-def azureqpuRun(circuit):
+async def azureqpuRun(circuit):
 
     workspace = Workspace ( 
         resource_id = "/subscriptions/bb7d82f6-5626-486b-8e29-835b0d417e07/resourceGroups/AzureQuantum/providers/Microsoft.Quantum/Workspaces/Tester", 
@@ -62,12 +67,11 @@ def azureqpuRun(circuit):
     provider = AzureQuantumProvider(workspace)
 
     qpu_backend = provider.get_backend("rigetti.qpu.ankaa-2")    
-
+    print("Backend job ready!")
     job = qpu_backend.run(circuit, shots=1024)
     result = job.result()
+    print("Rsult ready!")
 
     return result
 
-def qiskitRun(circuit):
-    QiskitRuntimeService.save_account(channel='ibm_quantum', token="706179ec98fae9b640ce20093f777c2a87794132fb253a984412a1ea4b74479beb1cdaa40c567e7172b5c26bb82a1f74e8d6094607fb3826982e23a5a820dbf0")
-    
+
