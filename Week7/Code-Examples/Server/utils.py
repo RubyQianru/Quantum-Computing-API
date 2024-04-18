@@ -9,6 +9,8 @@ from azure.quantum.qiskit import AzureQuantumProvider
 from azure.quantum import Workspace
 from azure.identity import DefaultAzureCredential
 default_credential = DefaultAzureCredential()
+from qiskit import transpile
+
 
 # IBM Quantum
 # from qiskit_ibm_runtime import QiskitRuntimeService
@@ -17,20 +19,20 @@ default_credential = DefaultAzureCredential()
 import numpy as np
 import asyncio
 
-async def randomWalker():
-    counts = await generateRandomness(2)
+def randomWalker():
+    counts = generateRandomness(2)
     binary_string = max(counts, key=counts.get)
 
     return binary_string
 
-async def randomFloat():
-    counts = await generateRandomness(5)
+def randomFloat():
+    counts = generateRandomness(5)
     measurement = list(counts.keys())[0]  
     random_float = int(measurement, 2) / (2**5)  
 
     return random_float
 
-async def generateRandomness(num_qubits):
+def generateRandomness(num_qubits):
 
     qc = QuantumCircuit(num_qubits, num_qubits)
     qc.h(range(num_qubits))
@@ -41,12 +43,10 @@ async def generateRandomness(num_qubits):
     qc.measure(range(num_qubits),range(num_qubits))
 
     print("Circuit ready!")
-    counts = None
-    try: 
-        result = await azureqpuRun(qc)
-        counts = result.get_counts(qc)
-    except Exception as e:
-        print(f"Unexpected error: {e}")
+    
+    result = azureqpuRun(qc)
+    counts = {format(n, "03b"): 0 for n in range(8)}
+    counts.update(result.get_counts(qc))
 
     return counts
 
@@ -57,7 +57,7 @@ def simulatorRun(circuit):
     result = simulator.run(compiled_circuit).result()
     return result
 
-async def azureqpuRun(circuit):
+def azureqpuRun(circuit):
 
     workspace = Workspace ( 
         resource_id = "/subscriptions/bb7d82f6-5626-486b-8e29-835b0d417e07/resourceGroups/AzureQuantum/providers/Microsoft.Quantum/Workspaces/Tester", 
@@ -66,12 +66,14 @@ async def azureqpuRun(circuit):
 
     provider = AzureQuantumProvider(workspace)
 
+    simulator_backend = provider.get_backend("ionq.simulator")
+    circuit = transpile(circuit, simulator_backend)
+
     qpu_backend = provider.get_backend("rigetti.qpu.ankaa-2")    
     print("Backend job ready!")
-    job = qpu_backend.run(circuit, shots=1024)
+    job = qpu_backend.run(circuit, shots=28)
     result = job.result()
-    print("Rsult ready!")
-
+    print(result)
     return result
 
 

@@ -14,7 +14,7 @@ async def websocket_connection_handler(websocket: WebSocket, data_handler):
         while True:
             qcResponse = await data_handler()
             await manager.send_data(f"{qcResponse}", websocket)
-            await asyncio.sleep(30)  
+            await asyncio.sleep(100)  
 
     except asyncio.CancelledError:
         print("WebSocket connection closed by client.")
@@ -44,7 +44,7 @@ async def websocket_scheduler_handler(websocket: WebSocket, data_handler):
         print("WebSocket Disconnected")
 
 async def handle_random_walker():
-    return await u.randomWalker()
+    return u.randomWalker()
 
 async def handle_random_float():
-    return await u.randomFloat()
+    return u.randomFloat()

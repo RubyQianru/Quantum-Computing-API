@@ -20,6 +20,10 @@ function setup() {
   };
 }
 
+function draw() {
+  websocket.send("Heartbeat");
+}
+
 function drawCurve() {
   background(255);
   stroke(0);
@@ -29,5 +33,6 @@ function drawCurve() {
     curveVertex(i*10, arr[i]);
   }
   endShape();
+
 }
 
