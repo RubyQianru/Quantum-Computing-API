@@ -2,15 +2,19 @@ from qiskit import QuantumCircuit, transpile, assemble
 from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram
 
+# Azure Quantum
 import azure.quantum
 from azure.quantum.qiskit import AzureQuantumProvider
 from azure.quantum import Workspace
+from azure.identity import DefaultAzureCredential
+default_credential = DefaultAzureCredential()
+
+# IBM Quantum
+from qiskit_ibm_runtime import QiskitRuntimeService
 
 import numpy as np
 
-from azure.identity import DefaultAzureCredential
 
-default_credential = DefaultAzureCredential()
 
 
 def randomWalker():
@@ -49,6 +53,7 @@ def simulatorRun(circuit):
     return result
 
 def azureqpuRun(circuit):
+
     workspace = Workspace ( 
         resource_id = "/subscriptions/bb7d82f6-5626-486b-8e29-835b0d417e07/resourceGroups/AzureQuantum/providers/Microsoft.Quantum/Workspaces/Tester", 
         location = "East US"  
@@ -62,3 +67,7 @@ def azureqpuRun(circuit):
     result = job.result()
 
     return result
+
+def qiskitRun(circuit):
+    QiskitRuntimeService.save_account(channel='ibm_quantum', token="706179ec98fae9b640ce20093f777c2a87794132fb253a984412a1ea4b74479beb1cdaa40c567e7172b5c26bb82a1f74e8d6094607fb3826982e23a5a820dbf0")
+    
