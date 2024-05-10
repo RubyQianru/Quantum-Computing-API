@@ -28,7 +28,8 @@ def randomFloat():
     counts = generateRandomness(5)
     measurement = list(counts.keys())[0]  
     random_float = int(measurement, 2) / (2**5)  
-
+    print(random_float)
+    # Here, I want to generate a random float according to the counts
     return random_float
 
 def generateRandomness(num_qubits):
@@ -52,9 +53,10 @@ def generateRandomness(num_qubits):
     '''
     counts = {format(n, "0" + str(num_qubits) + "b"): 0 for n in range(2 ** num_qubits)}
     counts.update(result.get_counts(qc))
-    print(counts)
 
     '''
+    counts:
+    
     {'00000': 1.0, '00001': 2.0, '00010': 1.0, '00011': 1.0, '00100': 0, '00101': 1.0, '00110': 0, '00111': 1.0, '01000': 2.0, '01001': 0, '01010': 0, '01011': 0, '01100': 1.0, '01101': 1.0, '01110': 1.0, '01111': 0, '10000': 4.0, '10001': 3.0, '10010': 0, '10011': 0, '10100': 0, '10101': 1.0, '10110': 0, '10111': 0, '11000': 2.0, '11001': 2.0, '11010': 1.0, '11011': 1.0, '11100': 1.0, '11101': 0, '11110': 0, '11111': 1.0}
     '''
 
